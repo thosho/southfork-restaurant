@@ -313,22 +313,22 @@
           <div class="form-row">
             <div class="form-group">
               <label data-i18n="form.name">Full Name *</label>
-              <input type="text" name="your-name" id="fieldName" class="form-control" required placeholder="Your full name" autocomplete="name" />
+              <input type="text" name="your-name" id="fieldName" class="form-control" required placeholder="Your full name" data-i18n="form.namePlaceholder" autocomplete="name" />
             </div>
             <div class="form-group">
               <label data-i18n="form.email">Email Address *</label>
-              <input type="email" name="your-email" id="fieldEmail" class="form-control" required placeholder="you@example.com" autocomplete="email" />
+              <input type="email" name="your-email" id="fieldEmail" class="form-control" required placeholder="you@example.com" data-i18n="form.emailPlaceholder" autocomplete="email" />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label data-i18n="form.phone">Phone Number *</label>
-              <input type="tel" name="your-tel" id="fieldPhone" class="form-control" required placeholder="+1 403-000-0000" autocomplete="tel" />
+              <input type="tel" name="your-tel" id="fieldPhone" class="form-control" required placeholder="+1 403-000-0000" data-i18n="form.phonePlaceholder" autocomplete="tel" />
             </div>
             <div class="form-group">
               <label data-i18n="form.party">Party Size *</label>
               <select name="partySize" class="form-control" required>
-                <option value="">Select...</option>
+                <option value="" data-i18n="form.select">Select...</option>
                 <option>1 Person</option><option>2 People</option><option>3 People</option>
                 <option>4 People</option><option>5 People</option><option>6 People</option>
                 <option>7 People</option><option>8 People</option><option>9 People</option>
@@ -344,7 +344,7 @@
             <div class="form-group">
               <label data-i18n="form.time">Preferred Time *</label>
               <select name="ResTime" class="form-control" required>
-                <option value="">Select time...</option>
+                <option value="" data-i18n="form.selectTime">Select time...</option>
                 <option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option>
                 <option>11:30 AM</option><option>12:00 PM</option><option>12:30 PM</option>
                 <option>1:00 PM</option><option>1:30 PM</option><option>2:00 PM</option>
@@ -356,7 +356,7 @@
           </div>
           <div class="form-group">
             <label data-i18n="form.special">Special Requests</label>
-            <textarea id="specialRequests" class="form-control" rows="2" placeholder="Dietary needs, celebrations, allergies..."></textarea>
+            <textarea id="specialRequests" class="form-control" rows="2" placeholder="Dietary needs, celebrations, allergies..." data-i18n="form.specialPlaceholder"></textarea>
           </div>
 
           <!-- Pre-Informed Menu summary -->
@@ -482,7 +482,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Southfork Restaurant. <span data-i18n="footer.rights">All Rights Reserved.</span> <span class="footer-sep">|</span> <span class="footer-credit">Designed and maintained by <a href="https://thoshotech.com/" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600;text-decoration:none;">Thosho Tech</a></span></p>
+        <p>&copy; 2026 Southfork Restaurant. <span data-i18n="footer.rights">All Rights Reserved.</span> <span class="footer-sep">|</span> <span class="footer-credit"><span data-i18n="footer.designedBy">Designed and maintained by</span> <a href="https://thoshotech.com/" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600;text-decoration:none;">Thosho Tech</a></span></p>
         <div class="footer-legal">
           <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
           <a href="#" data-i18n="footer.terms">Terms of Use</a>
