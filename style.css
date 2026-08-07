@@ -719,6 +719,7 @@ input[type="date"], input[type="time"] { color-scheme:dark; }
   .footer-grid { grid-template-columns:1fr; gap:2rem; }
   .footer-bottom { flex-direction:column; text-align:center; }
   .footer-mobile-center, .footer-mobile-center ul, .footer-mobile-center li { text-align:center; align-items:center; justify-content:center; }
+  .footer-brand img { margin: 0 auto 1.2rem; display: block; }
   .footer-brand p { margin: 0 auto 1.2rem; }
   .footer-sep { display:none; }
   .footer-credit { display:block; margin-top:.4rem; }
