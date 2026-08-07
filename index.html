@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Southfork Restaurant | Fine Dining in High River, Alberta</title>
+  <meta name="description" content="Southfork Restaurant — award-winning Canadian cuisine in High River, Alberta. Just 30km from Calgary. Book your table today. Best breakfast, lunch & dinner. 110 1st St SW, High River, AB." />
+  <meta name="keywords" content="Southfork Restaurant, High River restaurant, best restaurant Alberta, Canadian cuisine, fine dining Alberta, breakfast High River, dinner near Calgary" />
+  <meta property="og:title" content="Southfork Restaurant | High River, Alberta" />
+  <meta property="og:description" content="Locally sourced Canadian cuisine. Breakfast, lunch, dinner & private events. Book a table today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- ══ SAVED INFO BANNER (shown if localStorage has data) ══ -->
+  <div class="saved-banner" id="savedBanner" style="display:none">
+    <i class="fas fa-user-circle"></i>
+    <span id="savedBannerText">Welcome back! Use your saved info?</span>
+    <div class="saved-banner-btns">
+      <button class="saved-yes" id="savedYes">Yes, fill in</button>
+      <button class="saved-no" id="savedNo">No thanks</button>
+    </div>
+  </div>
+
+  <!-- ══ NAVIGATION ══ -->
+  <header id="header">
+    <nav class="navbar">
+      <div class="nav-inner">
+        <a href="#home" class="nav-logo">
+          <img src="/assets/dininglogo.png" alt="Southfork Restaurant" />
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" data-i18n="nav.home">Home</a></li>
+          <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+          <li><a href="https://southforkrestaurant.blogspot.com" target="_blank" rel="noopener" data-i18n="nav.blog">Blog</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          <li><a href="#booking-form" class="btn-nav" data-i18n="nav.reservation">Reserve a Table</a></li>
+        </ul>
+        <div class="nav-controls">
+          <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="en" id="lang-en">EN</button>
+            <span class="lang-sep">|</span>
+            <button class="lang-btn" data-lang="fr" id="lang-fr">FR</button>
+          </div>
+          <button class="cart-icon-btn" id="cartToggle" aria-label="View Cart">
+            <i class="fas fa-shopping-basket"></i>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+          <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ══ CART SIDEBAR ══ -->
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3><i class="fas fa-utensils"></i> <span data-i18n="cart.title">Your Pre-Informed Menu</span></h3>
+      <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="cart-empty" data-i18n="cart.empty">Your list is empty.<br>Add items from the menu!</p>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span data-i18n="cart.total">Estimated Total</span>
+        <strong id="cartTotal">$0.00</strong>
+      </div>
+      <p class="cart-disclaimer" data-i18n="cart.disclaimer">This pre-informed menu helps us prepare in advance. All food is cooked fresh upon your arrival. Prices are indicative and may vary.</p>
+      <a href="#booking-form" class="btn btn-gold" id="cartCheckout" onclick="closeSidebar()">
+        <i class="fas fa-whatsapp-square"></i> <span data-i18n="cart.checkout">Book &amp; Inform</span>
+      </a>
+    </div>
+  </aside>
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <!-- ══ HERO ══ -->
+  <section id="home" class="hero">
+    <div class="hero-slides">
+      <div class="hero-slide active" style="background-image: url('/assets/hero-img-1.jpg')"></div>
+      <div class="hero-slide" style="background-image: url('/assets/ambitious-studio-rick-barrett-MSYKvKnUEYo-unsplash.jpg')"></div>
+      <div class="hero-slide" style="background-image: url('/assets/filipp-romanovski-2uoywm-ESkY-unsplash-2.jpg')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+
+    <!-- Decorative candle element (replaces comingsoon.gif) -->
+    <div class="hero-candle-decor">
+      <img src="/assets/candle-decor.jpg" alt="" aria-hidden="true" />
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-tag reveal" data-i18n="hero.tag">Established 2014 · High River, Alberta</p>
+      <h1 class="reveal">Southfork<br><em>Restaurant</em></h1>
+      <p class="hero-tagline reveal" data-i18n="hero.tagline">Where every plate tells a story of<br>Canadian heritage &amp; culinary passion</p>
+      <div class="hero-btns reveal">
+        <a href="#menu" class="btn btn-gold" data-i18n="hero.menuBtn">Explore Menu</a>
+        <a href="#booking-form" class="btn btn-outline-white" data-i18n="hero.reserveBtn">Book a Table</a>
+      </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">10+</span>
+        <span class="stat-label" data-i18n="stats.years">Years of Excellence</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">50+</span>
+        <span class="stat-label" data-i18n="stats.dishes">Signature Dishes</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">7</span>
+        <span class="stat-label" data-i18n="stats.days">Days a Week</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">⭐ 4.8</span>
+        <span class="stat-label" data-i18n="stats.rating">Guest Rating</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FEATURES STRIP ══ -->
+  <section class="features-strip">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-item reveal">
+          <i class="fas fa-leaf"></i>
+          <div><h4 data-i18n="feat.fresh">Locally Sourced</h4><p data-i18n="feat.fresh.sub">Fresh Canadian ingredients</p></div>
+        </div>
+        <div class="feature-item reveal">
+          <i class="fas fa-award"></i>
+          <div><h4 data-i18n="feat.award">Award-Winning Chef</h4><p data-i18n="feat.award.sub">Hyatt-trained, world-class</p></div>
+        </div>
+        <div class="feature-item reveal">
+          <i class="fas fa-glass-cheers"></i>
+          <div><h4 data-i18n="feat.events">Private Events</h4><p data-i18n="feat.events.sub">Birthdays, parties, ceremonies</p></div>
+        </div>
+        <div class="feature-item reveal">
+          <i class="fas fa-map-marker-alt"></i>
+          <div><h4 data-i18n="feat.location">30km from Calgary</h4><p data-i18n="feat.location.sub">110 1 St SW, High River, AB</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MENU ══ -->
+  <section id="menu" class="section-menu">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="menu.tag">Our Culinary Delights</span>
+        <h2 data-i18n="menu.title">Explore Our Menu</h2>
+        <p data-i18n="menu.subtitle">Every dish tells a story of passion and fresh ingredients</p>
+      </div>
+      <div class="menu-tabs reveal" id="menuTabs">
+        <button class="tab-btn active" data-cat="all" data-i18n="menu.all">All</button>
+        <button class="tab-btn" data-cat="breakfast" data-i18n="menu.breakfast">Breakfast</button>
+        <button class="tab-btn" data-cat="starters" data-i18n="menu.starters">Starters</button>
+        <button class="tab-btn" data-cat="mains" data-i18n="menu.mains">Mains</button>
+        <button class="tab-btn" data-cat="burgers" data-i18n="menu.burgers">Burgers &amp; Wraps</button>
+        <button class="tab-btn" data-cat="pasta" data-i18n="menu.pasta">Pasta &amp; Salads</button>
+      </div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+  </section>
+
+  <!-- ══ ABOUT ══ -->
+  <section id="about" class="section-about">
+    <div class="about-bg" style="background-image: url('/assets/ambitious-studio-rick-barrett-A_Uf6NSU-xY-unsplash.jpg')"></div>
+    <div class="about-overlay"></div>
+    <div class="container about-content">
+      <div class="about-text reveal">
+        <span class="section-tag" data-i18n="about.tag">Our Story</span>
+        <h2 data-i18n="about.title">From India to<br>High River, Alberta</h2>
+        <p data-i18n="about.p1">Established in 2014, Southfork Restaurant is a beloved local treasure in High River, Alberta — just 30km from Calgary. Founded by Chef Rajesh Balaji, whose culinary journey began at the prestigious Hyatt Hotel in India, every dish reflects decades of international expertise and a deep love for Canadian cuisine.</p>
+        <p data-i18n="about.p2">Whether you're craving a classic Alberta beef steak, our famous Butter Chicken Eggs Benedict, a hearty poutine, or a fresh Caesar salad — we celebrate Canada's finest flavours with a modern twist. Family-friendly, welcoming to all, and open 7 days a week.</p>
+        <div class="timeline">
+          <div class="tl-item reveal">
+            <div class="tl-year">2007</div>
+            <div class="tl-content">
+              <h4 data-i18n="tl.1.title">The Hyatt, India</h4>
+              <p data-i18n="tl.1.desc">Chef Rajesh Balaji begins his fine dining career mastering Western cuisine at the iconic Hyatt Hotel.</p>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="tl-year">2019</div>
+            <div class="tl-content">
+              <h4 data-i18n="tl.2.title">Calgary, Alberta</h4>
+              <p data-i18n="tl.2.desc">The journey to Canada begins at Mat's Diner in Calgary — learning Canadian tastes and community values.</p>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="tl-year">2014</div>
+            <div class="tl-content">
+              <h4 data-i18n="tl.3.title">Southfork Opens</h4>
+              <p data-i18n="tl.3.desc">Southfork Restaurant opens in High River — quickly becoming the #1 dining destination in the area.</p>
+            </div>
+          </div>
+        </div>
+        <a href="#booking-form" class="btn btn-gold" data-i18n="about.cta">Reserve Your Table</a>
+      </div>
+      <div class="about-images reveal">
+        <div class="img-main"><img src="/assets/urban-gyllstrom-MaWMfm-HCqQ-unsplash.jpg" alt="Chef at Southfork" loading="lazy" /></div>
+        <div class="img-secondary"><img src="/assets/sebastian-coman-photography-ZGgIYaL9lYk-unsplash-1.jpg" alt="Southfork Dining" loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ GALLERY ══ -->
+  <section id="gallery" class="section-gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="gallery.tag">Visual Feast</span>
+        <h2 data-i18n="gallery.title">A Glimpse of Southfork</h2>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="gallery-item big"><img src="/assets/ambitious-studio-rick-barrett-68tAI6RJ-kY-unsplash.jpg" alt="Fine dining" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand"></i></div></div>
+        <div class="gallery-item"><img src="/assets/gallery-1.jpeg" alt="Food" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand"></i></div></div>
+        <div class="gallery-item"><img src="/assets/gallery-2.jpeg" alt="Food" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand"></i></div></div>
+        <div class="gallery-item"><img src="/assets/gallery-3.jpeg" alt="Food" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand"></i></div></div>
+        <div class="gallery-item"><img src="/assets/gallery-4.jpeg" alt="Food" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand"></i></div></div>
+        <div class="gallery-item"><img src="/assets/alena-torgonskaya-wO5DwEoyKjI-unsplash-780x520.jpg" alt="Restaurant" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand"></i></div></div>
+        <div class="gallery-item"><img src="/assets/annie-spratt-LdPQ0u6-_jg-unsplash-780x520.jpg" alt="Restaurant" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONIALS ══ -->
+  <section class="section-testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="testi.tag">What Guests Say</span>
+        <h2 data-i18n="testi.title">Guest Reviews</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card glass reveal">
+          <div class="testi-stars">★★★★★</div>
+          <p data-i18n="testi.1">"The butter chicken eggs benedict is absolutely divine. We drove from Calgary just for breakfast and it was worth every kilometre!"</p>
+          <div class="testi-author">
+            <img src="/assets/review1.jpeg" alt="Guest" />
+            <div><strong>Sarah M.</strong><span>Calgary, AB</span></div>
+          </div>
+        </div>
+        <div class="testi-card glass reveal">
+          <div class="testi-stars">★★★★★</div>
+          <p data-i18n="testi.2">"Best steak I've had in Alberta. The atmosphere is warm, staff incredibly friendly. Southfork has become our family's special occasion restaurant."</p>
+          <div class="testi-author">
+            <img src="/assets/review2.jpeg" alt="Guest" />
+            <div><strong>James T.</strong><span>Okotoks, AB</span></div>
+          </div>
+        </div>
+        <div class="testi-card glass reveal">
+          <div class="testi-stars">★★★★★</div>
+          <p data-i18n="testi.3">"We hosted our anniversary dinner here. Chef Rajesh personally came out to greet us. The food, service, and ambience were absolutely world-class."</p>
+          <div class="testi-author">
+            <img src="/assets/review3.jpeg" alt="Guest" />
+            <div><strong>Michelle &amp; Paul</strong><span>High River, AB</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ RESERVATION ══ -->
+  <section id="reservation" class="section-reservation">
+    <div class="res-bg" style="background-image: url('/assets/footer-bg.jpg')"></div>
+    <div class="res-overlay"></div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="res.tag">Reservations</span>
+        <h2 data-i18n="res.title">Book Your Table</h2>
+        <p data-i18n="res.subtitle">Reserve your spot and experience the best of High River dining</p>
+      </div>
+      <div class="res-card glass reveal">
+        <!-- Visit Info Panel -->
+        <div class="res-info">
+          <h3 data-i18n="res.info.title">Visit Us</h3>
+          <ul class="res-info-list">
+            <li><i class="fas fa-map-marker-alt"></i><span>110 1 St SW, High River, AB T1V 1G4</span></li>
+            <li><i class="fas fa-phone"></i><a href="tel:+14036522282">+1 403-652-2282</a></li>
+            <li><i class="fas fa-envelope"></i><a href="mailto:prisharajinc@gmail.com">prisharajinc@gmail.com</a></li>
+            <li><i class="fas fa-clock"></i><span data-i18n="hours.text">Mon – Sun: 8:00 AM – 9:00 PM</span></li>
+            <li><i class="fab fa-whatsapp"></i><a href="https://wa.me/14036522282" target="_blank">WhatsApp Us</a></li>
+          </ul>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+          <!-- Candle decoration in sidebar -->
+          <div class="res-candle">
+            <img src="/assets/candle-decor.jpg" alt="" aria-hidden="true" />
+          </div>
+        </div>
+
+        <!-- Booking Form — anchor target is HERE at the form -->
+        <form class="res-form" id="booking-form" action="/southforkmail/sendmail.php" method="POST">
+          <input type="hidden" name="formname" value="reservation" />
+          <input type="hidden" name="your-message" id="hiddenMessage" value="" />
+
+          <h3 class="form-heading" data-i18n="form.heading">Your Details</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="form.name">Full Name *</label>
+              <input type="text" name="your-name" id="fieldName" class="form-control" required placeholder="Your full name" autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label data-i18n="form.email">Email Address *</label>
+              <input type="email" name="your-email" id="fieldEmail" class="form-control" required placeholder="you@example.com" autocomplete="email" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="form.phone">Phone Number *</label>
+              <input type="tel" name="your-tel" id="fieldPhone" class="form-control" required placeholder="+1 403-000-0000" autocomplete="tel" />
+            </div>
+            <div class="form-group">
+              <label data-i18n="form.party">Party Size *</label>
+              <select name="partySize" class="form-control" required>
+                <option value="">Select...</option>
+                <option>1 Person</option><option>2 People</option><option>3 People</option>
+                <option>4 People</option><option>5 People</option><option>6 People</option>
+                <option>7 People</option><option>8 People</option><option>9 People</option>
+                <option>10+ People</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="form.date">Date *</label>
+              <input type="date" name="startDate" class="form-control" required id="resDate" />
+            </div>
+            <div class="form-group">
+              <label data-i18n="form.time">Preferred Time *</label>
+              <select name="ResTime" class="form-control" required>
+                <option value="">Select time...</option>
+                <option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option>
+                <option>11:30 AM</option><option>12:00 PM</option><option>12:30 PM</option>
+                <option>1:00 PM</option><option>1:30 PM</option><option>2:00 PM</option>
+                <option>5:00 PM</option><option>5:30 PM</option><option>6:00 PM</option>
+                <option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option>
+                <option>8:00 PM</option><option>8:30 PM</option><option>9:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form.special">Special Requests</label>
+            <textarea id="specialRequests" class="form-control" rows="2" placeholder="Dietary needs, celebrations, allergies..."></textarea>
+          </div>
+
+          <!-- Pre-Informed Menu summary -->
+          <div class="cart-summary-in-form" id="cartSummaryInForm" style="display:none">
+            <h5><i class="fas fa-list-ul"></i> <span data-i18n="form.preorder">Pre-Informed Menu</span></h5>
+            <div id="cartSummaryList"></div>
+            <p class="form-disclaimer" data-i18n="form.disclaimer">* This pre-informed menu is shared with the restaurant to help prepare in advance. However, all food is freshly cooked only after your arrival. Final prices may slightly vary.</p>
+          </div>
+
+          <div class="form-btns">
+            <button type="submit" class="btn btn-gold btn-full">
+              <i class="fas fa-calendar-check"></i> <span data-i18n="form.submit">Confirm Reservation</span>
+            </button>
+            <button type="button" class="btn btn-whatsapp btn-full" id="whatsappBtn">
+              <i class="fab fa-whatsapp"></i> <span data-i18n="form.whatsapp">Send Pre-Informed Menu via WhatsApp</span>
+            </button>
+          </div>
+          <p class="form-after-btn-note">&#9733; This pre-informed menu helps us prepare in advance. All food is cooked fresh upon your arrival. Prices are indicative and may vary.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ══ -->
+  <section id="contact" class="section-contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="contact.tag">Find Us</span>
+        <h2 data-i18n="contact.title">Contact &amp; Location</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card glass reveal">
+          <i class="fas fa-map-marker-alt"></i>
+          <h4 data-i18n="contact.address.title">Address</h4>
+          <p>110 1 St SW<br>High River, AB T1V 1G4<br>Canada</p>
+        </div>
+        <div class="contact-card glass reveal">
+          <i class="fas fa-phone"></i>
+          <h4 data-i18n="contact.phone.title">Phone</h4>
+          <p><a href="tel:+14036522282">+1 403-652-2282</a></p>
+        </div>
+        <div class="contact-card glass reveal">
+          <i class="fas fa-clock"></i>
+          <h4 data-i18n="contact.hours.title">Hours</h4>
+          <p data-i18n="contact.hours.text">Monday – Sunday<br>8:00 AM – 9:00 PM</p>
+        </div>
+        <div class="contact-card glass reveal">
+          <i class="fas fa-envelope"></i>
+          <h4 data-i18n="contact.email.title">Email</h4>
+          <p><a href="mailto:prisharajinc@gmail.com">prisharajinc@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="map-wrap reveal">
+        <iframe title="Southfork Restaurant Location"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2506.0!2d-113.8735!3d50.5816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537177b3a3a3a3a3%3A0x0!2s110+1+St+SW%2C+High+River%2C+AB+T1V+1G4!5e0!3m2!1sen!2sca!4v1"
+          width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ NEWSLETTER ══ -->
+  <section class="section-newsletter">
+    <div class="container">
+      <div class="newsletter-inner glass reveal">
+        <div>
+          <h3 data-i18n="news.title">Stay in the Loop</h3>
+          <p data-i18n="news.desc">Get the latest menu updates, holiday hours &amp; special events from Southfork.</p>
+        </div>
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+          <input type="email" class="form-control" placeholder="Your email address" required />
+          <button type="submit" class="btn btn-gold" data-i18n="news.btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="/assets/dininglogo.png" alt="Southfork" />
+          <p data-i18n="footer.tagline">Bringing the best of Canadian cuisine to your table since 2014.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5 data-i18n="footer.links">Quick Links</h5>
+          <ul>
+            <li><a href="#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+            <li><a href="https://southforkrestaurant.blogspot.com" target="_blank" rel="noopener" data-i18n="nav.blog">Blog</a></li>
+            <li><a href="#booking-form" data-i18n="nav.reservation">Reserve</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 data-i18n="footer.hours">Opening Hours</h5>
+          <ul class="hours-list">
+            <li><span data-i18n="day.mon">Monday</span><span>8am – 9pm</span></li>
+            <li><span data-i18n="day.tue">Tuesday</span><span>8am – 9pm</span></li>
+            <li><span data-i18n="day.wed">Wednesday</span><span>8am – 9pm</span></li>
+            <li><span data-i18n="day.thu">Thursday</span><span>8am – 9pm</span></li>
+            <li><span data-i18n="day.fri">Friday</span><span>8am – 9pm</span></li>
+            <li><span data-i18n="day.sat">Saturday</span><span>8am – 9pm</span></li>
+            <li><span data-i18n="day.sun">Sunday</span><span>8am – 9pm</span></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 data-i18n="footer.contact">Contact Us</h5>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i>110 1 St SW, High River, AB</li>
+            <li><i class="fas fa-phone"></i><a href="tel:+14036522282">+1 403-652-2282</a></li>
+            <li><i class="fas fa-envelope"></i><a href="mailto:prisharajinc@gmail.com">prisharajinc@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Southfork Restaurant. <span data-i18n="footer.rights">All Rights Reserved.</span> | Designed by <strong>Thoshotech</strong></p>
+        <div class="footer-legal">
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+    <img src="" alt="Gallery" id="lightboxImg" />
+  </div>
+
+  <!-- ══ BOOKING CONFIRMATION POPUP ══ -->
+  <div class="confirm-overlay" id="confirmOverlay">
+    <div class="confirm-card" id="confirmCard">
+      <div class="confirm-header">
+        <img src="/assets/dininglogo.png" alt="Southfork" class="confirm-logo" />
+        <h2>Reservation Confirmed!</h2>
+        <p class="confirm-tagline">Southfork Restaurant &middot; High River, Alberta</p>
+      </div>
+
+      <div class="confirm-divider">&#9670; &nbsp; &#9670; &nbsp; &#9670;</div>
+
+      <div class="confirm-body">
+        <p class="confirm-greeting" id="confirmGreeting">We are delighted to welcome you to Southfork Restaurant and look forward to your arrival.</p>
+
+        <div class="confirm-details" id="confirmDetails"></div>
+
+        <div class="confirm-menu-summary" id="confirmMenuSummary" style="display:none">
+          <h5>&#127860; Pre-Informed Menu</h5>
+          <div id="confirmMenuList"></div>
+        </div>
+
+        <p class="confirm-note">&#9733; All food is freshly prepared upon your arrival.<br>&#9733; Please arrive 5–10 minutes early. We look forward to serving you!</p>
+      </div>
+
+      <div class="confirm-footer no-print">
+        <button class="confirm-close-btn" id="confirmClose"><i class="fas fa-times"></i> Close</button>
+        <button class="confirm-download-btn" id="confirmDownload">
+          <i class="fas fa-download"></i> Download Invitation
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden Print Template -->
+  <div id="printInvitation"></div>
+
+  <script src="/main.js" type="module"></script>
+</body>
+</html>
