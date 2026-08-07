@@ -968,20 +968,24 @@ input[type="date"], input[type="time"] { color-scheme:dark; }
 
 /* ══ PRINT / DOWNLOAD STYLES ══ */
 @media print {
+  @page { margin: 0; size: auto; }
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { background: #0e0e0e !important; }
   body > *:not(#printInvitation) { display: none !important; }
-  #printInvitation { display: block !important; }
+  #printInvitation { 
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: #0e0e0e;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+  }
   .no-print { display: none !important; }
 }
 
 #printInvitation {
   display: none;
-  font-family: var(--ff-body);
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 40px;
-  background: #0e0e0e;
-  color: #f0ece4;
-  border: 2px solid #c9a84c;
 }
-

@@ -582,7 +582,7 @@ function downloadInvitation() {
 
   const printEl = document.getElementById('printInvitation');
   printEl.innerHTML = `
-    <div style="font-family:'Playfair Display',Georgia,serif;background:#0e0e0e;color:#f0ece4;max-width:520px;margin:0 auto;border:2px solid #c9a84c;padding:0;border-radius:12px;overflow:hidden;">
+    <div style="font-family:'Playfair Display',Georgia,serif;background:#0e0e0e;color:#f0ece4;width:100%;max-width:520px;margin:0 auto;border:2px solid #c9a84c;padding:0;border-radius:12px;overflow:hidden;">
       <div style="height:4px;background:linear-gradient(90deg,transparent,#c9a84c,#e8c97a,#c9a84c,transparent);"></div>
       <div style="background:linear-gradient(160deg,#1a1507,#0e0e0e);text-align:center;padding:30px 30px 20px;border-bottom:1px solid rgba(201,168,76,.2);">
         <div style="font-size:22px;font-weight:700;color:#c9a84c;letter-spacing:.04em;">Southfork Restaurant</div>
