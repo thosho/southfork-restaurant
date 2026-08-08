@@ -6,7 +6,7 @@ import './style.css';
 const i18n = {
   en: {
     'nav.home':'Home','nav.menu':'Menu','nav.about':'About','nav.gallery':'Gallery',
-    'nav.blog':'Blog','nav.contact':'Contact','nav.reservation':'Reserve a Table',
+    'nav.contact':'Contact','nav.reservation':'Reserve a Table',
     'hero.tag':'Established 2014 · High River, Alberta',
     'hero.tagline':'Where every plate tells a story of\nCanadian heritage & culinary passion',
     'hero.menuBtn':'Explore Menu','hero.reserveBtn':'Book a Table',
@@ -67,7 +67,7 @@ const i18n = {
   },
   fr: {
     'nav.home':'Accueil','nav.menu':'Menu','nav.about':'À Propos','nav.gallery':'Galerie',
-    'nav.blog':'Blog','nav.contact':'Contact','nav.reservation':'Réserver une Table',
+    'nav.contact':'Contact','nav.reservation':'Réserver une Table',
     'hero.tag':'Établi en 2014 · High River, Alberta',
     'hero.tagline':'Où chaque assiette raconte une histoire de\npatrimoine canadien et de passion culinaire',
     'hero.menuBtn':'Explorer le Menu','hero.reserveBtn':'Réserver une Table',
@@ -158,12 +158,7 @@ document.querySelectorAll('.lang-btn').forEach(b =>
   b.addEventListener('click', () => applyLang(b.dataset.lang))
 );
 
-document.querySelectorAll('.blog-link').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    alert(lang === 'fr' ? 'Bientôt disponible !' : 'Coming soon!');
-  });
-});
+
 
 /* ══════════════════════════════════════════
    MENU DATA
