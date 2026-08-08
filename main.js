@@ -158,6 +158,13 @@ document.querySelectorAll('.lang-btn').forEach(b =>
   b.addEventListener('click', () => applyLang(b.dataset.lang))
 );
 
+document.querySelectorAll('.blog-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert(lang === 'fr' ? 'Bientôt disponible !' : 'Coming soon!');
+  });
+});
+
 /* ══════════════════════════════════════════
    MENU DATA
 ══════════════════════════════════════════ */
